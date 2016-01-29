@@ -11,10 +11,10 @@ function deldir {
 		return;
 	}
 
+	Write-Host "Deleting directory " -nonewline; Write-Host $dir -f green -nonewline; Write-Host " ...";
 	md temp.dir | out-null
 	attrib +h $dir /s /d | out-null
 	robocopy temp.dir $dir /MIR | out-null
-	Write-Host "Deleting directory " -nonewline; Write-Host $dir -f green -nonewline; Write-Host " ...";
 	rm temp.dir | out-null
 	rm $dir | out-null
 	Write-Host $dir -f green -nonewline; Write-Host " removed!";
